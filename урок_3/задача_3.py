@@ -8,7 +8,6 @@ def max_sum(namber_1,namber_2,namber_3):
     max_2=max(fun_list)
     return max_1+max_2
 
-
 my_namber_1=int(input("Введите первое число: "))
 my_namber_2=int(input("Введите второе число: "))
 my_namber_3=int(input("Введите третье число: "))

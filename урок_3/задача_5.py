@@ -15,14 +15,13 @@ def sum_func():
             summa+=sum_list(str_lict)
             print(f"Cумма введённых чисел = {summa}")
             break
-            #return summa
         else:
             summa+=sum_list(str_lict)
             print(f"Cумма введённых чисел = {summa}")
             continue
 def sum_list(_sum_list_):
     """
-    Функция вычисляет сумму чисел в списке "_sum_list_"
+    Функция вычисляет сумму чисел в списке из строк "_sum_list_"
     """
     summa=0
     for i in _sum_list_:
@@ -31,6 +30,5 @@ def sum_list(_sum_list_):
         except ValueError:
             continue
     return summa
-
 
 sum_func()

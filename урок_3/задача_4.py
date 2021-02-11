@@ -18,9 +18,6 @@ def my_func_2(x, y):
             rez*=x
         return rez
 
-
-
-
 while True:
     try:
         namber=float(input("Введите действительное положительное число x = "))
