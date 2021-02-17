@@ -11,7 +11,8 @@ def profile(first_name, last_name, year_of_birth, city_of_residence, email, phon
     пользователя: имя, фамилия, год рождения, город проживания, email, телефон.
     Осуществляет вывод данных о пользователе одной строкой.
     """
-    return print(f"Имя: {first_name}, Фамилия: {last_name}, Год рождения: {year_of_birth}, Город проживания: {city_of_residence},  Email: {email},  Телефон: {phone}")
+    print(f"Имя: {first_name}, Фамилия: {last_name}, Год рождения: {year_of_birth}, Город проживания: {city_of_residence},  Email: {email},  Телефон: {phone}")
+
 
 my_first_name=input("Введите имя: ")
 my_last_name=input("Введите фамилию: ")
