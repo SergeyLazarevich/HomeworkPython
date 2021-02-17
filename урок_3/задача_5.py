@@ -10,8 +10,9 @@ def sum_func():
     """
     summa=0
     while True:
-        str_lict=input("Введите строку чисел, разделённых пробелом, или 'N' что бы закончить: ").split(" ")
+        str_lict=input("Введите строку чисел, разделённых пробелом, или 'N' что бы закончить: ").split()
         if str_lict[-1] == "N":
+            del str_lict[-1]
             summa+=sum_list(str_lict)
             print(f"Cумма введённых чисел = {summa}")
             break
@@ -19,6 +20,8 @@ def sum_func():
             summa+=sum_list(str_lict)
             print(f"Cумма введённых чисел = {summa}")
             continue
+
+
 def sum_list(_sum_list_):
     """
     Функция вычисляет сумму чисел в списке из строк "_sum_list_"
@@ -27,7 +30,8 @@ def sum_list(_sum_list_):
     for i in _sum_list_:
         try:
             summa+=int(i)
-        except ValueError:
+        except ValueError as err: 
+            print("Error ", err) 
             continue
     return summa
 

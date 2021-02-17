@@ -7,8 +7,10 @@ def division(namber_1,namber_2):
     """
     try:
         return namber_1/namber_2
-    except ZeroDivisionError:
+    except ZeroDivisionError as err: 
+        print("Error ", err) 
         return "на ноль делить нельзя"
+
 
 my_namber_1=float(input("введите делимое: "))
 my_namber_2=float(input("введите делитель: "))

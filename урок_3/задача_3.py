@@ -5,7 +5,8 @@ def max_sum(namber_1,namber_2,namber_3):
     fun_list=[namber_1,namber_2,namber_3]
     fun_min=min(fun_list)
     fun_list.remove(fun_min)
-    return fun_list[0]+fun_list[1]
+    return sum(fun_list)
+
 
 my_namber_1=int(input("Введите первое число: "))
 my_namber_2=int(input("Введите второе число: "))

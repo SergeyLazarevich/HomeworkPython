@@ -5,5 +5,6 @@ def fun_title(string):
     """
     return string.title()
 
+
 my_string=input("Вветите строку из маленьких латинских букв: ")
 print(fun_title(my_string))
