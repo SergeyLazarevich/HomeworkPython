@@ -11,8 +11,8 @@ def fact(stop):
 while True:
     try:
         n=int(input("Введите целое неотрицательное число (n) последовательности от 1 до n>=1: "))  
-    except ValueError:
-        print("Введённый символ не является числом!!!")
+    except ValueError as err:
+        print(f"Введённый символ не является числом!!!  {err}")
         continue
     if n==0:
         print("0!=1")
