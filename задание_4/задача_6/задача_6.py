@@ -1,7 +1,6 @@
-from my_fun_count import my_fun_count
-from my_fun_cycle import my_fun_cycle
+from my_fun_count import my_fun_count, my_fun_cycle
 
-print("Генерируем целые числа, начиная с указанного (по умолчанию 10)")
+print("Генерируем целые числа, начиная с указанного (по умолчанию от 0 до 9)")
 my_list=my_fun_count()
 print(my_list)
 print("Повторяем элементы списка, определённого заранее")
