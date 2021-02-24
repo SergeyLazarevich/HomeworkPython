@@ -4,7 +4,9 @@ try:
         slova=0
         for line in obj_f:
             stroka+=1
-            slova+=len(line.split(" "))
+            _=len(line.split(" "))
+            slova+=_
+            print(f"Слов в строке {stroka}: = {_}")
     print(f"Строк в файле: = {stroka}")
     print(f"Слов в файле: = {slova}")
 except IOError as err:
