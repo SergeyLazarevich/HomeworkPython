@@ -20,7 +20,7 @@ except IOError as err:
     print(err)
 
 try:
-    with open("My_file_7_7.txt",'w',encoding="UTF-8") as obj_f:
+    with open("My_file_7_7.json",'w',encoding="UTF-8") as obj_f:
         json.dump(final_list,obj_f)
 except IOError as err:
     print(err)
