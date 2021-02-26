@@ -34,9 +34,11 @@ class Position(Worker):
         print(f"Доход с учётом премии = {self._Worker__income['wage']+self._Worker__income['bonus']}")
 
 
+def new_func(worker):
+    worker.get_full_name()
+    worker.get_total_income()
+
 worker_1=Position("Ivan","Ivanov","worker",100, 20)
 worker_2=Position("Petr","Petrov","worker",120,40)
-worker_2.get_full_name()
-worker_2.get_total_income()
-worker_1.get_full_name()
-worker_1.get_total_income()
+new_func(worker_2)
+new_func(worker_1)

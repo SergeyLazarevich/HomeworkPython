@@ -100,14 +100,6 @@ class PoliceCar(Car):
         self.is_police=True
 
 
-def new_func1(TownCar, SportCar, WorkCar, PoliceCar):
-    car_1=TownCar(65,"красный","Audi")
-    car_2=SportCar(120,"синий","Bugatti")
-    car_3=WorkCar(80,"зелёный","Daewoo")
-    car_4=PoliceCar(90,"радужный","Ford")
-    return car_1,car_2,car_3,car_4
-
-
 def new_func(car):
     car.go()
     car.show_speed()
@@ -118,7 +110,10 @@ def new_func(car):
     car.show_speed()
 
 
-car_1, car_2, car_3, car_4 = new_func1(TownCar, SportCar, WorkCar, PoliceCar)
+car_1=TownCar(65,"красный","Audi")
+car_2=SportCar(120,"синий","Bugatti")
+car_3=WorkCar(80,"зелёный","Daewoo")
+car_4=PoliceCar(90,"радужный","Ford")
 new_func(car_1)
 new_func(car_2)
 new_func(car_3)
