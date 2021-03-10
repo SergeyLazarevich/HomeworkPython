@@ -218,7 +218,6 @@ class WarehouseEquipment:
             print_speed ([types]): [Скорость сканирования ст/мин]
             scanner_size ([types]): [Скорость печати ст/мин]
         """
-
         types = types.capitalize()
         if types not in  list(self.warehouse.keys()):
             raise TypeError ("Вам не на этот склад, это склад Оргтехники")
@@ -240,7 +239,6 @@ class WarehouseEquipment:
             types ([types]): [Тип]
             position ([int]): [Позиция в списке]
         """
-
         types = types.capitalize()
         if types not in  list(self.warehouse.keys()):
             raise TypeError ("Вам не на этот склад, это склад Оргтехники")
@@ -248,8 +246,7 @@ class WarehouseEquipment:
             raise TypeError ("Позиция должна выражаться целым числом")
         namber=0
         for i in self.warehouse.values():
-            for j in i:
-                namber+=len(j)
+            namber += len(i)
         if position>namber:
             raise TypeError ("Такой позиции нет на складе")
 
@@ -273,6 +270,7 @@ class WarehouseEquipment:
 
 if __name__ in "__main__":
     warehouse = WarehouseEquipment()
+    print("Принимаем на склад: \n")
     warehouse.set_equipment("Принтер","Samsung",2020,"Не Исправен", "2-б", 1000, 0)
     warehouse.set_equipment("Сканер","Samsung",2015,"Исправен", "3-a", 0, 20)
     warehouse.set_equipment("Ксерокс","Xserox",2021,"Исправен", "5-г", 1500, 35)
@@ -285,10 +283,13 @@ if __name__ in "__main__":
     warehouse.set_equipment("Принтер","Samsung",2020,"Исправен", "5-б", 1000, 0)
     warehouse.set_equipment("Монитор","Samsung",2015,"Исправен", "7-a", 0, 20)
     warehouse.set_equipment("Ксерокс","Xserox",2021,"Исправен", "1-г", 1500, "35")
+    print("\n Распечатаем всё что есть: \n")
     print(warehouse)
     warehouse.print_product_range()
+    print("\n Передадим в другое подразделение компании: \n")
     print(warehouse.get_equipment("Принтер",0))
     print(warehouse.get_equipment("Сканер",0))
     print(warehouse.get_equipment("Ксерокс",0))
+    print("\n Распечатаем что осталось: \n")
     print(warehouse)
     warehouse.print_product_range()
