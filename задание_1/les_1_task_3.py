@@ -11,15 +11,15 @@ c. случайный символ.
 from random import randint, uniform
 
 
-# print("  a)")
-# start = int(input("Введите нижнюю границу: "))
-# stop = int(input("Введите верхнюю границу: "))
-# print(f"случайное целое число в границах {start} ≤ {randint(start,stop)} ≤ {stop}")
+print("  a)")
+start = int(input("Введите нижнюю границу: "))
+stop = int(input("Введите верхнюю границу: "))
+print(f"случайное целое число в границах {start} ≤ {randint(start,stop)} ≤ {stop}")
 
-# print("  б)")
-# start = float(input("Введите нижнюю границу: "))
-# stop = float(input("Введите верхнюю границу: "))
-# print(f"случайное вещественное число в границах {start} ≤ {uniform(start,stop):.02f} ≤ {stop}")
+print("  б)")
+start = float(input("Введите нижнюю границу: "))
+stop = float(input("Введите верхнюю границу: "))
+print(f"случайное вещественное число в границах {start} ≤ {uniform(start,stop):.02f} ≤ {stop}")
 
 print("  в)")
 start = ord(input("Введите нижнюю границу: ").lower())
