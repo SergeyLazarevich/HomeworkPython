@@ -16,8 +16,9 @@ def prime(n: int)-> int:
     Returns:
         int: [простое чисело]
     """
+    m=n*30
     lst=[2]
-    for i in range(3, n*10+1, 2):
+    for i in range(3, m+1, 2):
         if (i > 10) and (i%10==5):continue
         for j in lst:
             if j*j-1 > i:
@@ -30,5 +31,6 @@ def prime(n: int)-> int:
     return lst[-1]
 
 
-n = int(input("n="))
-print(prime(n))
+# n = int(input("n="))
+# print(prime(n))
+print(prime(1000000))

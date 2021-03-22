@@ -16,19 +16,21 @@ def sieve(n: int)-> int:
     Returns:
         int: [простое чисело]
     """
-    a = [i for i in range(n*10+1)]
+    m=n*30
+    a = [i for i in range(m+1)]
     a[0] = a[1] = 0
     lst = []
     i = 2
-    while i <= n*10:
+    while i <= m:
         if a[i] != 0:
             lst.append(a[i])
-            for j in range(i*i, n*10+1, i):
+            for j in range(i*i, m+1, i):
                 a[j] = 0
         i += 1
         if len(lst) == n: break
     return lst[-1]
 
 
-n = int(input("n="))
-print(sieve(n))
+# n = int(input("n="))
+# print(sieve(n))
+print(sieve(1000000))
