@@ -15,32 +15,32 @@ def test(func):
 
 def func(n):
     list_nuber = [0]*8
-    for i in range(2,n):
-        for j in range(2,10):
-            if i % j == 0:
-                list_nuber[j - 2] +=1
+    for i in range(2,10):
+        for j in range(2,n):
+            if  j % i == 0:
+                list_nuber[i - 2] +=1
     return list_nuber
 
 
 # test(func)
 
 # run("func(1000)")
-# 4 function calls in 0.006 seconds
-# 1    0.006    0.006    0.006    0.006 les_4_task_1_1_1.py:16(func)
+# 4 function calls in 0.004 seconds
+# 1    0.003    0.003    0.003    0.003 les_4_task_1_1_1.py:16(func)
 
-#run("func(1000000)")
-# 4 function calls in 4.206 seconds
-# 1    4.206    4.206    4.206    4.206 les_4_task_1_1_1.py:16(func)
+# run("func(1000000)")
+# 4 function calls in 3.451 seconds
+# 1    3.450    3.450    3.450    3.450 les_4_task_1_1_2.py:16(func)
 
-# "les_4_task_1_1_1.func(10)"
-# 1000 loops, best of 5: 9.22 usec per loop
+# "les_4_task_1_1_2.func(10)"
+# 1000 loops, best of 5: 9.05 usec per loop
 
-# "les_4_task_1_1_1.func(100)"
-# 1000 loops, best of 5: 106 usec per loop  
+# "les_4_task_1_1_2.func(100)"
+# 1000 loops, best of 5: 68.1 usec per loop  
 
-# "les_4_task_1_1_1.func(1000)"
-# 1000 loops, best of 5: 1.09 msec per loop
+# "les_4_task_1_1_2.func(1000)"
+# 1000 loops, best of 5: 733 usec per loop
 
-# "les_4_task_1_1_1.func(10000)"
-# 1000 loops, best of 5: 11.2 msec per loop
+# "les_4_task_1_1_2.func(10000)"
+# 1000 loops, best of 5: 7.84 msec per loop
 

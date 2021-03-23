@@ -1,3 +1,12 @@
+from cProfile import run
+
+def test(func):
+    lst = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+    for i, item in enumerate(lst):
+        assert item == func(i+1)
+        print(f"Test {i+1}  OK")
+
+
 """2. Написать два алгоритма нахождения i-го по счёту простого числа. Функция нахождения 
 простого числа должна принимать на вход натуральное и возвращать соответствующее простое 
 число. Проанализировать скорость и сложность алгоритмов.
@@ -31,6 +40,25 @@ def sieve(n: int)-> int:
     return lst[-1]
 
 
-# n = int(input("n="))
-# print(sieve(n))
-print(sieve(1000000))
+# test(sieve)
+
+# run("sieve(100)")
+# 645 function calls in 0.008 seconds
+# 1    0.008    0.008    0.008    0.008 les_4_task_2_1.py:19(sieve)
+# 1    0.000    0.000    0.000    0.000 les_4_task_2_1.py:29(<listcomp>)
+
+# run("sieve(10000)")
+# 114733 function calls in 0.491 seconds
+# 1    0.403    0.403    0.488    0.488 les_4_task_2_1.py:19(sieve)
+# 1    0.071    0.071    0.071    0.071 les_4_task_2_1.py:29(<listcomp>)
+
+# "les_4_task_2_1.sieve(100)"
+# 1000 loops, best of 5: 599 usec per loop
+
+# "les_4_task_2_1.sieve(500)"
+# 1000 loops, best of 5: 3.67 msec per loop
+
+# "les_4_task_2_1.sieve(1000)"
+# 1000 loops, best of 5: 7.79 msec per loop
+
+
