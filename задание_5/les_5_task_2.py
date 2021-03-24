@@ -7,40 +7,74 @@
 Поэтому использование встроенных функций для перевода из одной системы счисления в другую в данной 
 задаче под запретом."""
 
-from collections import Counter
+from collections import deque
 
-first = input().upper() 
-second = input().upper() 
 
-hex_map = Counter({'0':0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'A':10, 'B':11, 'C':12, 'D':13, 'E':14, 'F':15})
-if len(first) > len(second):
-    first, second = second, first
-second = second[::-1]
-third = []
-j = -1
-k = 0
-for i in second:
-    one = hex_map[i]
-    two = hex_map[first[j]]
-    third.append(hex_map[(one + two + k) % 16])
-    if (one + two) >= 15:
-        k = 1
+def sum_hex(x, y):
+    HEX_NUM = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+               'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15,
+               0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9',
+               10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
+    result = deque()
+    transfer = 0
+
+    if len(y) > len(x):
+        x, y = deque(y), deque(x)
     else:
-        k = 0
-    j -= 1
-    if j == -len(first)-1:
-        break
-diff = len(second) - len(first)
+        x, y = deque(x), deque(y)
 
-if diff:
-    for i in second[-diff:]:
-        third.append(hex_map[(hex_map.index(second[-diff])+k)%16])
-        if hex_map[second[-diff]]+1 >=15:
-            k = 1
+    while x:
+        if y:
+            res = HEX_NUM[x.pop()] + HEX_NUM[y.pop()] + transfer
         else:
-            k = 0
-if k == 1:
-    third.append('1')
+            res = HEX_NUM[x.pop()] + transfer
+        transfer = 0
+        if res < 16:
+            result.appendleft(HEX_NUM[res])
+        else:
+            result.appendleft(HEX_NUM[res - 16])
+            transfer = 1
 
-print(third[::-1])
+    if transfer:
+        result.appendleft('1')
+    return list(result)
 
+
+def mult_hex(x, y):
+    HEX_NUM = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+               'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15,
+               0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9',
+               10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
+    result = deque()
+    spam = deque([deque() for _ in range(len(y))])
+    x, y = x.copy(), deque(y)
+
+    for i in range(len(y)):
+        m = HEX_NUM[y.pop()]
+        for j in range(len(x) - 1, -1, -1):
+            spam[i].appendleft(m * HEX_NUM[x[j]])
+        for _ in range(i):
+            spam[i].append(0)
+    transfer = 0
+    for _ in range(len(spam[-1])):
+        res = transfer
+        for i in range(len(spam)):
+            if spam[i]:
+                res += spam[i].pop()
+        if res < 16:
+            result.appendleft(HEX_NUM[res])
+        else:
+            result.appendleft(HEX_NUM[res % 16])
+            transfer = res // 16
+    if transfer:
+            result.appendleft(HEX_NUM[transfer])
+    return list(result)
+
+
+a = list(input('Введите 1-е шестнадцатиричное число: ').upper())
+b = list(input('Введите 2-е шестнадцатиричное число: ').upper())
+# print(a, b)
+
+print(*a, '+', *b, '=', *sum_hex(a, b))
+
+print(*a, '*', *b, '=', *mult_hex(a, b))

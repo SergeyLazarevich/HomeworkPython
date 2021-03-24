@@ -3,23 +3,41 @@
 всех предприятий) и отдельно вывести наименования предприятий, чья прибыль выше среднего и 
 ниже среднего."""
 
-from collections import OrderedDict
+from collections import namedtuple
 
-list_enterprises = OrderedDict()
-qty = int(input("Введите количество предприятий: "))
-summa = 0
-for i in range(qty):
-    strt = input("Введите наименованиe: ")
-    a = []
-    a.append(int(input("Введите прибыль за четыре квартала: ")))
-    list_enterprises[strt] = a
-    summa += a[0]
-summa = summa / qty
-list_enterprises["Средняя прибыль: "] = summa
-print(f"Средняя прибыль: {summa}")
-for i,item in enumerate(list_enterprises.items()):
-    if i == len(list_enterprises) - 1 :break
-    list_enterprises[item[0]].append(item[1][0] - summa)
-    print(f"{item[0]} отклонение от средней прибыли {item[1][0] - summa}")
+
+Enterprise = namedtuple('Enterprise', 'name quarter_1 quarter_2 quarter_3 quarter_4 year')
+
+enterprise_count = int(input('Введите количество предприятий для анализа: '))
+enterprises = [0 for _ in range(enterprise_count)]
+profit_sum = 0
+
+for i in range(enterprise_count):
+    name = input(f'Введите название {i+1}-го предприятия: ')
+    quarters = [float(j) for j in input('Введите через пробел прибыль в каждом квартале: ').split()]
+    year = 0
+    for quarter in quarters:
+        year += quarter
+    profit_sum += year
+    enterprises[i] = Enterprise(name, *quarters, year)
+
+if enterprise_count == 1:
+    print(f'Для анализа передано 1 предприятие: {enterprises[0].name}. Eго годовая прибыль: {enterprises[0].year}')
+else:
+    profit_average = profit_sum / enterprise_count
+    less = []
+    more = []
+    for i in range(enterprise_count):
+        if enterprises[i].year < profit_average:
+            less.append(enterprises[i])
+        elif enterprises[i].year > profit_average:
+            more.append(enterprises[i])
+    print(f'\nСредняя годовая прибыль по предприятиям: {profit_average: .2f}')
+    print(f'Предприятия, чья прибыль меньше {profit_average: .2f}:')
+    for ent in less:
+        print(f'Предприятие "{ent.name}" с прибылью {ent.year: .2f}')
+    print(f'\nПредприятия, чья прибыль больше {profit_average: .2f}:')
+    for ent in more:
+        print(f'Предприятие "{ent.name}" с прибылью {ent.year: .2f}')
 
 
