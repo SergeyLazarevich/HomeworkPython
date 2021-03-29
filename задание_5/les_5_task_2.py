@@ -71,8 +71,10 @@ def mult_hex(x, y):
     return list(result)
 
 
-a = list(input('Введите 1-е шестнадцатиричное число: ').upper())
-b = list(input('Введите 2-е шестнадцатиричное число: ').upper())
+# a = list(input('Введите 1-е шестнадцатиричное число: ').upper())
+# b = list(input('Введите 2-е шестнадцатиричное число: ').upper())
+b = ['A', '2']
+a = ['C', '4', 'F']
 # print(a, b)
 
 print(*a, '+', *b, '=', *sum_hex(a, b))
