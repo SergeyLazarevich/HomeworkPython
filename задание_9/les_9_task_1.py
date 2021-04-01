@@ -4,3 +4,26 @@
 * в сумму не включаем пустую строку и строку целиком;
 * без использования функций для вычисления хэша (hash(), sha1() или любой другой из модуля hashlib задача 
 считается не решённой."""
+from hashlib import sha1
+
+def count_substring(s: str)->int:
+    """ 
+    Определение количества различных подстрок с использованием хеш-функции.
+
+    Args:
+        s (str): на вход функции дана строка
+
+    Returns:
+        int: количество различных подстрок в этой строке
+    """
+    set_hash = set()
+    for i in range(len(s)):
+        for j in range(i + 1, len(s) + 1):
+            set_hash.add(hash(s[i:j]))
+    counters = len(set_hash) - 1  # вычитаем совпаение строки с самой собой
+    return counters
+
+if __name__ == '__main__':
+    my_str = input('Введите строку для проверки: ')
+    count = count_substring(my_str)
+    print(f'В строке "{my_str}" есть {count} различных подстрок')
